@@ -1,0 +1,6 @@
+{
+  "transform": {},
+  "testEnvironment": "jest-environment-node",
+  "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+  "collectCoverageFrom": ["src/**/*.js"]
+}
