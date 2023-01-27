@@ -1,6 +1,6 @@
 {
   "name": "@keonnie/vite-plugin-index-html-cloner",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Clone the main index.html file in sub directories mainly for Single Page Application hosted in storage like GCS.",
   "author": "Keonnie Engineering Team",
   "license": "MIT",
