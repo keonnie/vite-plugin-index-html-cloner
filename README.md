@@ -43,7 +43,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to contribute
 
 # Documentation
 
-See [Documentation](doc/index.md)
+See [Documentation](docs/index.md)
 
 # Testing
 

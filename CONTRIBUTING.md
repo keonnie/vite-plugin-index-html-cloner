@@ -4,19 +4,6 @@
 
 The following is a set of guidelines for contributing to our projects and its packages, which are hosted on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
-#### Table Of Contents
-
-[Code of Conduct](#code-of-conduct)
-
-[Contribute easily with VSCode](#contribute-easily-with-vscode)
-
-[Styleguides](#styleguides)
-
-- [Git Commit Messages](#git-commit-messages)
-- [JavaScript Styleguide](#javascript-styleguide)
-- [Tests Styleguide](#specs-styleguide)
-- [Documentation Styleguide](#documentation-styleguide)
-
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to project owner.
@@ -59,7 +46,7 @@ See also:
 
 ### Live testing
 
-`yarn test:watch`
+`yarn dev:test`
 
 ## Styleguides
 
@@ -71,28 +58,7 @@ This will format the code based on standard rules and run the coverage.
 
 ### Git Commit Messages
 
-- Use the present tense ("Add feature" not "Added feature")
-- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
-- Limit the first line to 72 characters or less
-- When only changing documentation, include `[ci skip]` in the commit title
-- Consider starting the commit message with an applicable emoji:
-  - :art: `:art:` when improving the format/structure of the code
-  - :racehorse: `:racehorse:` when improving performance
-  - :non-potable_water: `:non-potable_water:` when plugging memory leaks
-  - :memo: `:memo:` when writing docs
-  - :bug: `:bug:` when fixing a bug
-  - :fire: `:fire:` when removing code or files
-  - :green_heart: `:green_heart:` when fixing the CI build
-  - :white_check_mark: `:white_check_mark:` when adding tests
-  - :lock: `:lock:` when dealing with security
-  - :arrow_up: `:arrow_up:` when upgrading dependencies
-  - :arrow_down: `:arrow_down:` when downgrading dependencies
-  - :shirt: `:shirt:` when removing linter warnings
-  - :rocket: `:rocket:` when committing for release
-
-See also:
-
-- [Commit message guideline](COMMIT_MESSAGES.md)
+See [Commit message guideline](COMMIT_MESSAGES.md)
 
 ### JavaScript Styleguide
 
@@ -137,10 +103,10 @@ All JavaScript code is linted with [Prettier](https://prettier.io/).
 
 ```js
 describe('Unit | Dog', () => {
-  test('barks', () => {})
+  it('barks', () => {})
 
   describe('when happy' => {
-    test('wags its tail' => {})
+    it('wags its tail' => {})
   })
 })
 ```

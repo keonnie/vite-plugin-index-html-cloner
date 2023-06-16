@@ -35,9 +35,11 @@ If applied, this commit will _\<your subject line here\>_
 - Separate subject from body with a blank line
 - Do not end the subject line with a period
 - Capitalize the subject line and each paragraph
-- Use the imperative mood in the subject line
-- Wrap lines at 72 characters
+- Use the present tense ("Add feature" not "Added feature")
+- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+- Wrap lines at 72 characters or less
 - Use the body to explain what and why you have done something. In most cases, you can leave out details about how a change has been made.
+- When only changing documentation, include `[ci skip]` in the commit title
 
 ### Information in commit messages
 
@@ -52,6 +54,22 @@ If applied, this commit will _\<your subject line here\>_
 - Do not include patch set-specific comments.
 
 Details for each point and good commit message examples can be found on https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages
+
+- Consider starting the commit message with an applicable emoji:
+  - :seedling: `:seedling:` when adding features or enhancements
+  - :art: `:art:` when improving the format/structure of the code
+  - :racehorse: `:racehorse:` when improving performance
+  - :non-potable_water: `:non-potable_water:` when plugging memory leaks
+  - :memo: `:memo:` when writing docs
+  - :bug: `:bug:` when fixing a bug
+  - :fire: `:fire:` when removing code or files
+  - :green_heart: `:green_heart:` when fixing the CI build
+  - :white_check_mark: `:white_check_mark:` when adding tests
+  - :lock: `:lock:` when dealing with security
+  - :arrow_up: `:arrow_up:` when upgrading dependencies
+  - :arrow_down: `:arrow_down:` when downgrading dependencies
+  - :shirt: `:shirt:` when removing linter warnings
+  - :rocket: `:rocket` when committing for release
 
 ### References in commit messages
 
