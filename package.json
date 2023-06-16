@@ -31,7 +31,7 @@
     "pre-commit": "yarn format && yarn coverage",
     "prettier": "prettier -c .",
     "prettier:fix": "prettier --write .",
-    "test": "node --experimental-vm-modules $(yarn bin jest)"
+    "test": "node --no-warnings --experimental-vm-modules $(yarn bin jest)"
   },
   "devDependencies": {
     "eslint": "^8.31.0",
