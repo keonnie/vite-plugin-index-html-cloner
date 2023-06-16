@@ -2,6 +2,12 @@
 
 A list of dependencies used in this project. The intent is to provide the process of using a specific dependency and ease the maintenance for the future.
 
+## Live
+
+## yaml
+
+We have included the `yaml` library in our project to transform configuration files written in YAML format into JavaScript objects. This allows us to easily read and process YAML configuration files in applications. By using `yaml`, we can efficiently parse and serialize YAML data, making it easier to work with YAML configuration files in JavaScript applications.
+
 ## Development
 
 ### eslint & prettier & its plugins

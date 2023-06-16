@@ -1,11 +1,12 @@
 import { resolve } from 'node:path'
+import YAML from 'yaml'
 import {
   access,
   constants,
   mkdir,
   readdir,
   readFile,
-  copyFile,
+  writeFile,
 } from 'node:fs/promises'
 
 const packagejson = await readFile(resolve('package.json'), 'utf8')
@@ -53,6 +54,36 @@ async function pathExist(path) {
 }
 
 /**
+ * Parse all the template literals variable
+ * in a string to their equivalent provided
+ * @param {String} str
+ * @param {{*}} obj
+ * @returns {String}
+ */
+function parseLiterals(str, obj) {
+  let parts = str.split(/\{\{(?!\d)[\wæøåÆØÅ]*\}\}/)
+  let args = str.match(/[^{{}}]+(?=}})/g)
+  let parameters = args.map((argument) => obj[argument] ?? '')
+  return String.raw({ raw: parts }, ...parameters)
+}
+
+async function rewriteFile(rootPath, outPath, indexContent, dirName = '') {
+  const newPathFile = `${outPath}/${MAIN_FILE}`
+
+  const seoConfigFilePath = resolve(rootPath, dirName, '.seo.yml')
+
+  let seo = {}
+
+  if (await pathExist(seoConfigFilePath)) {
+    const yaml = await readFile(seoConfigFilePath)
+    seo = YAML.parse(yaml.toString())
+  }
+
+  const parsed = parseLiterals(indexContent, seo)
+  await writeFile(newPathFile, parsed, { encoding: 'utf-8' })
+}
+
+/**
  * Hook at the end of the flow
  * Create a directory for all sub directories
  * containing the specify file the config
@@ -68,20 +99,26 @@ async function closeBundle() {
     (dirent) => dirent.isDirectory(),
   )
 
+  const indexContent = (await readFile(mainIndexPath)).toString()
+
   for (let dir of dirs) {
     let isView = await hasView(
       vite_config.root,
       dir.name,
       vite_config.build.detectViewPattern,
     )
+
     if (!isView) continue
 
     let outPath = resolve(vite_config.build.outDir, dir.name)
     let dirExist = await pathExist(outPath)
     if (!dirExist) await mkdir(outPath)
 
-    await copyFile(mainIndexPath, `${outPath}/${MAIN_FILE}`)
+    await rewriteFile(vite_config.root, outPath, indexContent, dir.name)
   }
+
+  // Update main view if SEO file
+  await rewriteFile(vite_config.root, vite_config.build.outDir, indexContent)
 }
 
 /**
